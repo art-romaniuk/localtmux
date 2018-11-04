@@ -1,0 +1,17 @@
+#!/bin/bash
+
+TMUX_DIR=$HOME/.tmux
+BUNDLE_DIR=bundle
+
+# Initialize submodule
+git submodule update --init
+
+# Install tmux latest version
+cd "$BUNDLE_DIR"/bundle/tmux
+sh autogen.sh
+./configure && make
+
+# Create simbolic lint on .tmux.conf file
+if [ ! -f $HOME/.tmux.conf ]; then
+    ln -s "$TMUX_DIR"/.tmux.conf $HOME/.tmux.conf
+fi
