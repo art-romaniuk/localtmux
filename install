@@ -7,7 +7,7 @@ BUNDLE_DIR=bundle
 git submodule update --init
 
 # Install tmux latest version
-cd "$BUNDLE_DIR"/bundle/tmux
+cd "$BUNDLE_DIR"/tmux
 sh autogen.sh
 ./configure && make
 
