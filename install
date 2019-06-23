@@ -1,18 +1,11 @@
 #!/bin/bash
 
-TMUX_DIR=$HOME/.tmux
+TMUX_DIR="$HOME"/.tmux
 BUNDLE_DIR=bundle
 
 # Initialize submodule
 git submodule update --init
 
-if [ -x $(which make) ];then
-    sudo apt install automake
-    sudo apt install autotools-dev
-fi
-
-echo 'not isntalled';
-exit 0;
 # Install tmux latest version
 cd "$BUNDLE_DIR"/tmux
 sh autogen.sh
