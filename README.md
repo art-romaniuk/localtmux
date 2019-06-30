@@ -15,3 +15,4 @@ git clone https://github.com:RomaniukAS/localtmux.git ~/.tmux
 ```
 3. To install `tmux` plugins, press:
 `Ctrl-Space + I`, and wait a few secons
+> To uninstall plugins press `Ctrl-Space + u`

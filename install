@@ -3,15 +3,29 @@
 TMUX_DIR="$HOME"/.tmux
 BUNDLE_DIR=bundle
 
-# Initialize submodule
-git submodule update --init
+# Install make tool if not installed
+if ! which make; then
+    apt-get install build-essential
+fi
+
+# Install requirements for tmux
+# tmux depends on libevent 2.x
+if ! which ldconfig; then
+    apt-get install libevent-dev
+fi
+# tmux depends on libevent 2.x
+if ! which ncurses; then
+    apt-get install libncurses5-dev libncursesw5-dev
+fi
 
 # Install tmux latest version
-cd "$BUNDLE_DIR"/tmux
-sh autogen.sh
-./configure && make
+if ! which tmux; then
+    cd "$BUNDLE_DIR"/tmux
+    sh autogen.sh
+    ./configure && make
+    cp $BUNDLE_DIR/tmux/tmux /usr/local/bin
+fi
 
 # Create simbolic lint on .tmux.conf file
-if [ ! -f $HOME/.tmux.conf ]; then
-    ln -s "$TMUX_DIR"/.tmux.conf $HOME/.tmux.conf
-fi
+[[ -f $HOME/.tmux.conf ]] && mv $HOME/.tmux.conf $HOME/.tmux.conf.old
+ln -s "$TMUX_DIR"/.tmux.conf $HOME/.tmux.conf
