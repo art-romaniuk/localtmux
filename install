@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TMUX_DIR="$HOME"/.tmux
+TMUX_DIR=~/.tmux
 BUNDLE_DIR=bundle
 
 # Install make tool if not installed
@@ -27,5 +27,5 @@ if ! which tmux; then
 fi
 
 # Create simbolic lint on .tmux.conf file
-[[ -f $HOME/.tmux.conf ]] && mv $HOME/.tmux.conf $HOME/.tmux.conf.old
-ln -s "$TMUX_DIR"/.tmux.conf $HOME/.tmux.conf
+[[ -f ~/.tmux.conf ]] && mv ~/.tmux.conf ~/.tmux.conf.old
+ln -s ~/.tmux.conf ~/.tmux.conf
